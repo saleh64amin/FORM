@@ -189,6 +189,15 @@
             <label for="references" class="form-label">المراجع (معلومات الاتصال لأصحاب المشاريع)</label>
             <textarea class="form-control" id="references" rows="2" placeholder="معلومات المراجع"></textarea>
           </div>
+          
+          <!-- إضافة قسم المرفقات -->
+          <div class="mb-3">
+            <label class="form-label">المرفقات (الشهادات، المستندات، الصور)</label>
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="attachments" multiple accept=".pdf,.jpg,.jpeg,.png" onchange="handleFiles(this.files)">
+            </div>
+            <div id="fileList" class="mt-2"></div>
+          </div>
         </div>
       </div>
       
@@ -316,6 +325,29 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-qQ4/4mi/ZNJzTV0g9JpQF7/+7kr5g2xYbsI4d05U0K/8IHYox0B9+ELhB5SXQ0T5" crossorigin="anonymous"></script>
   
   <script>
+    let selectedFiles = [];
+    function handleFiles(files) {
+      selectedFiles = Array.from(files);
+      const fileList = document.getElementById('fileList');
+      fileList.innerHTML = '';
+      
+      selectedFiles.forEach((file, index) => {
+        const fileSize = (file.size / (1024 * 1024)).toFixed(2); // Convert to MB
+        const fileItem = document.createElement('div');
+        fileItem.className = 'alert alert-info d-flex justify-content-between align-items-center';
+        fileItem.innerHTML = `
+          <span>${file.name} (${fileSize} MB)</span>
+          <button type="button" class="btn-close" onclick="removeFile(${index})"></button>
+        `;
+        fileList.appendChild(fileItem);
+      });
+    }
+    function removeFile(index) {
+      selectedFiles.splice(index, 1);
+      const input = document.getElementById('attachments');
+      input.value = ''; // Reset file input
+      handleFiles(selectedFiles); // Refresh the file list
+    }
     function sendWhatsApp() {
       // جمع البيانات من الحقول
       const companyName = document.getElementById('companyName').value;
@@ -411,8 +443,119 @@
       // تحويل النص إلى رابط واتساب (استبدل "رقم_الهاتف" بالرقم المستهدف بصيغة دولية)
       const phoneNumber = "966555992797";
       const url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
-      
       window.open(url, '_blank');
+    }
+    function sendWhatsApp() {
+      // جمع البيانات من الحقول
+      const companyName = document.getElementById('companyName').value;
+      const companyAddress = document.getElementById('companyAddress').value;
+      const companyPhone = document.getElementById('companyPhone').value;
+      const companyEmail = document.getElementById('companyEmail').value;
+      const companyWebsite = document.getElementById('companyWebsite').value;
+      const companyYear = document.getElementById('companyYear').value;
+      const legalStructure = document.getElementById('legalStructure').value;
+      const licenseNumber = document.getElementById('licenseNumber').value;
+      const taxID = document.getElementById('taxID').value;
+      
+      const contactName = document.getElementById('contactName').value;
+      const contactPosition = document.getElementById('contactPosition').value;
+      const contactPhone = document.getElementById('contactPhone').value;
+      const contactEmail = document.getElementById('contactEmail').value;
+      
+      const yearsOfExperience = document.getElementById('yearsOfExperience').value;
+      const specialization = document.getElementById('specialization').value;
+      const latestProjects = document.getElementById('latestProjects').value;
+      const references = document.getElementById('references').value;
+      
+      const bankReference = document.getElementById('bankReference').value;
+      const bondAmount = document.getElementById('bondAmount').value;
+      const insuranceCoverage = document.getElementById('insuranceCoverage').value;
+      
+      const safetyProgram = document.getElementById('safetyProgram').value;
+      const emr = document.getElementById('emr').value;
+      
+      const keyStaff = document.getElementById('keyStaff').value;
+      const certifications = document.getElementById('certifications').value;
+      
+      const equipmentList = document.getElementById('equipmentList').value;
+      
+      const subcontractors = document.getElementById('subcontractors').value;
+      
+      const clientReference = document.getElementById('clientReference').value;
+      
+      const litigationHistory = document.getElementById('litigationHistory').value;
+      const regulatoryCompliance = document.getElementById('regulatoryCompliance').value;
+      
+      // تجميع الرسالة
+      let message = "نموذج التأهيل المسبق لمقاول البناء\n\n";
+      message += " 1. معلومات الشركة \n";
+      message += "اسم الشركة: " + companyName + "\n";
+      message += "العنوان: " + companyAddress + "\n";
+      message += "رقم الهاتف: " + companyPhone + "\n";
+      message += "البريد الإلكتروني: " + companyEmail + "\n";
+      message += "الموقع الإلكتروني: " + companyWebsite + "\n";
+      message += "تاريخ الإنشاء: " + companyYear + "\n";
+      message += "الهيكل القانوني: " + legalStructure + "\n";
+      message += "رقم الترخيص: " + licenseNumber + "\n";
+      message += "المعرف الضريبي: " + taxID + "\n\n";
+      
+      message += " 2. معلومات الاتصال \n";
+      message += "اسم جهة الاتصال: " + contactName + "\n";
+      message += "المنصب: " + contactPosition + "\n";
+      message += "رقم الهاتف: " + contactPhone + "\n";
+      message += "البريد الإلكتروني: " + contactEmail + "\n\n";
+      
+      message += " 3. خلفية الشركة وخبرتها \n";
+      message += "سنوات العمل: " + yearsOfExperience + "\n";
+      message += "التخصص الأساسي: " + specialization + "\n";
+      message += "أحدث المشاريع:\n" + latestProjects + "\n";
+      message += "المراجع:\n" + references + "\n\n";
+      
+      message += " 4. المعلومات المالية \n";
+      message += "مرجع البنك: " + bankReference + "\n";
+      message += "قدرة الترابط: " + bondAmount + "\n";
+      message += "التغطية التأمينية: " + insuranceCoverage + "\n\n";
+      
+      message += " 5. سجل السلامة \n";
+      message += "برنامج السلامة: " + safetyProgram + "\n";
+      message += "EMR: " + emr + "\n\n";
+      
+      message += " 6. الموظفين \n";
+      message += "الموظفون الرئيسيون: " + keyStaff + "\n";
+      message += "الشهادات: " + certifications + "\n\n";
+      
+      message += " 7. المعدات \n";
+      message += "قائمة المعدات الرئيسية: " + equipmentList + "\n\n";
+      
+      message += " 8. المقاولون من الباطن \n";
+      message += "المقاولون من الباطن المؤهلون مسبقا:\n" + subcontractors + "\n\n";
+      
+      message += " 9. المراجع \n";
+      message += "مرجع العميل 1: " + clientReference + "\n\n";
+      
+      message += " 10. القانون والامتثال \n";
+      message += "تاريخ التقاضي: " + litigationHistory + "\n";
+      message += "الامتثال التنظيمي: " + regulatoryCompliance + "\n";
+      
+      // تحويل النص إلى رابط واتساب (استبدل "رقم_الهاتف" بالرقم المستهدف بصيغة دولية)
+      const phoneNumber = "966555992797";
+      const url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+      window.open(url, '_blank');
+      // Send files in separate messages
+      if (selectedFiles.length > 0) {
+        setTimeout(() => {
+          selectedFiles.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const fileUrl = e.target.result;
+              const fileMessage = `مرفق: ${file.name}`;
+              const fileWhatsappUrl = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(fileMessage);
+              window.open(fileWhatsappUrl, '_blank');
+            };
+            reader.readAsDataURL(file);
+          });
+        }, 1000);
+      }
     }
   </script>
 </body>
