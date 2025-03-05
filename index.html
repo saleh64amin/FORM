@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>نموذج التأهيل المسبق لمقاول البناء</title>
+  <!-- تضمين Bootstrap CSS من CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-+qdLaW/qU6B+VDM8DdZ7Lfj5+3Z1W/9w1XIL8Oww0nE7ohC+OGpamoFVy38+3Hf9" crossorigin="anonymous">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        direction: rtl;
+        text-align: right;
+        background-color: #f0f2f5;
+        padding: 20px;
+    }
+    .form-container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+        margin-bottom: 25px;
+    }
+    label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+        color: #2c3e50;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e1e8ed;
+        border-radius: 8px;
+        font-size: 16px;
+        text-align: right;
+        transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        outline: none;
+    }
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+        line-height: 1.5;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #25D366;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    button:hover {
+        background-color: #128C7E;
+        transform: translateY(-1px);
+    }
+    .card {
+        margin-bottom: 1.5rem;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+    .card-header {
+        padding: 1.2rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .card-body {
+        padding: 1.5rem;
+        background-color: #ffffff;
+    }
+    .form-control:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    }
+     
+</style>
+</head>
+<body>
+  <div class="container form-container">
+    <h2 class="text-center mb-4">نموذج التأهيل المسبق لمقاول البناء</h2>
+    <form id="qualificationForm">
+      
+      <!-- 1. معلومات الشركة -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          1. معلومات الشركة
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="companyName" class="form-label">اسم الشركة</label>
+            <input type="text" class="form-control" id="companyName" placeholder="اسم شركتك">
+          </div>
+          <div class="mb-3">
+            <label for="companyAddress" class="form-label">العنوان</label>
+            <input type="text" class="form-control" id="companyAddress" placeholder="عنوان الشارع">
+          </div>
+          <div class="mb-3">
+            <label for="companyPhone" class="form-label">رقم الهاتف</label>
+            <input type="text" class="form-control" id="companyPhone" placeholder="رقم الهاتف">
+          </div>
+          <div class="mb-3">
+            <label for="companyEmail" class="form-label">البريد الإلكتروني</label>
+            <input type="email" class="form-control" id="companyEmail" placeholder="عنوان البريد الإلكتروني">
+          </div>
+          <div class="mb-3">
+            <label for="companyWebsite" class="form-label">الموقع الإلكتروني</label>
+            <input type="url" class="form-control" id="companyWebsite" placeholder="عنوان URL للموقع">
+          </div>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="companyYear" class="form-label">تاريخ الإنشاء</label>
+              <input type="number" class="form-control" id="companyYear" placeholder="السنة">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="legalStructure" class="form-label">الهيكل القانوني</label>
+              <input type="text" class="form-control" id="legalStructure" placeholder="شركة / شركة ذات مسؤولية محدودة">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="licenseNumber" class="form-label">رقم الترخيص</label>
+              <input type="text" class="form-control" id="licenseNumber" placeholder="رقم الترخيص">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="taxID" class="form-label">المعرف الضريبي</label>
+            <input type="text" class="form-control" id="taxID" placeholder="المعرف الضريبي">
+          </div>
+        </div>
+      </div>
+  
+      <!-- 2. معلومات الاتصال -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+          2. معلومات الاتصال
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="contactName" class="form-label">اسم جهة الاتصال الأساسية</label>
+            <input type="text" class="form-control" id="contactName" placeholder="الاسم">
+          </div>
+          <div class="mb-3">
+            <label for="contactPosition" class="form-label">المنصب</label>
+            <input type="text" class="form-control" id="contactPosition" placeholder="المنصب">
+          </div>
+          <div class="mb-3">
+            <label for="contactPhone" class="form-label">رقم الهاتف</label>
+            <input type="text" class="form-control" id="contactPhone" placeholder="رقم الهاتف">
+          </div>
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">البريد الإلكتروني</label>
+            <input type="email" class="form-control" id="contactEmail" placeholder="عنوان البريد الإلكتروني">
+          </div>
+        </div>
+      </div>
+      
+      <!-- 3. خلفية الشركة وخبرتها -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+          3. خلفية الشركة وخبرتها
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="yearsOfExperience" class="form-label">سنوات العمل</label>
+              <input type="number" class="form-control" id="yearsOfExperience" placeholder="سنوات">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="specialization" class="form-label">التخصص الأساسي</label>
+              <input type="text" class="form-control" id="specialization" placeholder="التخصصات">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="latestProjects" class="form-label">أحدث المشاريع (مثال: مشروع A – سكني – 2020)</label>
+            <textarea class="form-control" id="latestProjects" rows="3" placeholder="مثال: مشروع A – سكني – 2020&#10;مشروع B – تجاري – 2021"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="references" class="form-label">المراجع (معلومات الاتصال لأصحاب المشاريع)</label>
+            <textarea class="form-control" id="references" rows="2" placeholder="معلومات المراجع"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 4. المعلومات المالية -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">
+          4. المعلومات المالية
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="bankReference" class="form-label">مرجع البنك</label>
+            <input type="text" class="form-control" id="bankReference" placeholder="اسم البنك وجهة الاتصال">
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="bondAmount" class="form-label">قدرة الترابط (مبلغ السند)</label>
+              <input type="text" class="form-control" id="bondAmount" placeholder="مبلغ السند">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="insuranceCoverage" class="form-label">التغطية التأمينية</label>
+              <input type="text" class="form-control" id="insuranceCoverage" placeholder="مزود التأمين والحدود">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 5. سجل السلامة -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+          5. سجل السلامة
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="safetyProgram" class="form-label">برنامج السلامة</label>
+            <input type="text" class="form-control" id="safetyProgram" placeholder="التفاصيل">
+          </div>
+          <div class="mb-3">
+            <label for="emr" class="form-label">EMR (معدل تعديل الخبرة لآخر 3 سنوات)</label>
+            <input type="text" class="form-control" id="emr" placeholder="EMR">
+          </div>
+        </div>
+      </div>
+      
+      <!-- 6. الموظفين -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-warning text-dark">
+          6. الموظفين
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="keyStaff" class="form-label">الموظفون الرئيسيون</label>
+            <textarea class="form-control" id="keyStaff" rows="2" placeholder="قائمة مديري المشاريع والمشرفين"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="certifications" class="form-label">الشهادات (مثل LEED و OSHA)</label>
+            <input type="text" class="form-control" id="certifications" placeholder="الشهادات">
+          </div>
+        </div>
+      </div>
+      
+      <!-- 7. المعدات -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+          7. المعدات
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="equipmentList" class="form-label">قائمة المعدات الرئيسية</label>
+            <textarea class="form-control" id="equipmentList" rows="2" placeholder="قائمة المعدات"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 8. المقاولون من الباطن -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+          8. المقاولون من الباطن
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="subcontractors" class="form-label">المقاولون من الباطن المؤهلون مسبقا</label>
+            <textarea class="form-control" id="subcontractors" rows="2" placeholder="قائمة المقاولين من الباطن والتخصصات"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 9. المراجع -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">
+          9. المراجع
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="clientReference" class="form-label">مرجع العميل 1 (اسم العميل، جهة الاتصال، وصف المشروع)</label>
+            <textarea class="form-control" id="clientReference" rows="2" placeholder="مثال: شركة X – 0100000000 – مشروع تجاري"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 10. القانون والامتثال -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white">
+          10. القانون والامتثال
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="litigationHistory" class="form-label">تاريخ التقاضي</label>
+            <input type="text" class="form-control" id="litigationHistory" placeholder="تفاصيل التقاضي السابق أو الجاري، إن وجد">
+          </div>
+          <div class="mb-3">
+            <label for="regulatoryCompliance" class="form-label">الامتثال التنظيمي</label>
+            <input type="text" class="form-control" id="regulatoryCompliance" placeholder="تأكيد الامتثال للقوانين واللوائح">
+          </div>
+        </div>
+      </div>
+      
+      <!-- زر إرسال البيانات -->
+      <div class="text-center">
+        <button type="button" class="btn btn-whatsapp btn-lg" onclick="sendWhatsApp()">إرسال البيانات عبر واتساب</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- تضمين Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-qQ4/4mi/ZNJzTV0g9JpQF7/+7kr5g2xYbsI4d05U0K/8IHYox0B9+ELhB5SXQ0T5" crossorigin="anonymous"></script>
+  
+  <script>
+    function sendWhatsApp() {
+      // جمع البيانات من الحقول
+      const companyName = document.getElementById('companyName').value;
+      const companyAddress = document.getElementById('companyAddress').value;
+      const companyPhone = document.getElementById('companyPhone').value;
+      const companyEmail = document.getElementById('companyEmail').value;
+      const companyWebsite = document.getElementById('companyWebsite').value;
+      const companyYear = document.getElementById('companyYear').value;
+      const legalStructure = document.getElementById('legalStructure').value;
+      const licenseNumber = document.getElementById('licenseNumber').value;
+      const taxID = document.getElementById('taxID').value;
+      
+      const contactName = document.getElementById('contactName').value;
+      const contactPosition = document.getElementById('contactPosition').value;
+      const contactPhone = document.getElementById('contactPhone').value;
+      const contactEmail = document.getElementById('contactEmail').value;
+      
+      const yearsOfExperience = document.getElementById('yearsOfExperience').value;
+      const specialization = document.getElementById('specialization').value;
+      const latestProjects = document.getElementById('latestProjects').value;
+      const references = document.getElementById('references').value;
+      
+      const bankReference = document.getElementById('bankReference').value;
+      const bondAmount = document.getElementById('bondAmount').value;
+      const insuranceCoverage = document.getElementById('insuranceCoverage').value;
+      
+      const safetyProgram = document.getElementById('safetyProgram').value;
+      const emr = document.getElementById('emr').value;
+      
+      const keyStaff = document.getElementById('keyStaff').value;
+      const certifications = document.getElementById('certifications').value;
+      
+      const equipmentList = document.getElementById('equipmentList').value;
+      
+      const subcontractors = document.getElementById('subcontractors').value;
+      
+      const clientReference = document.getElementById('clientReference').value;
+      
+      const litigationHistory = document.getElementById('litigationHistory').value;
+      const regulatoryCompliance = document.getElementById('regulatoryCompliance').value;
+      
+      // تجميع الرسالة
+      let message = "نموذج التأهيل المسبق لمقاول البناء\n\n";
+      message += "═══════════ 1. معلومات الشركة ═══════════\n";
+      message += "اسم الشركة: " + companyName + "\n";
+      message += "العنوان: " + companyAddress + "\n";
+      message += "رقم الهاتف: " + companyPhone + "\n";
+      message += "البريد الإلكتروني: " + companyEmail + "\n";
+      message += "الموقع الإلكتروني: " + companyWebsite + "\n";
+      message += "تاريخ الإنشاء: " + companyYear + "\n";
+      message += "الهيكل القانوني: " + legalStructure + "\n";
+      message += "رقم الترخيص: " + licenseNumber + "\n";
+      message += "المعرف الضريبي: " + taxID + "\n\n";
+      
+      message += "═══════════ 2. معلومات الاتصال ═══════════\n";
+      message += "اسم جهة الاتصال: " + contactName + "\n";
+      message += "المنصب: " + contactPosition + "\n";
+      message += "رقم الهاتف: " + contactPhone + "\n";
+      message += "البريد الإلكتروني: " + contactEmail + "\n\n";
+      
+      message += "═══════════ 3. خلفية الشركة وخبرتها ═══════════\n";
+      message += "سنوات العمل: " + yearsOfExperience + "\n";
+      message += "التخصص الأساسي: " + specialization + "\n";
+      message += "أحدث المشاريع:\n" + latestProjects + "\n";
+      message += "المراجع:\n" + references + "\n\n";
+      
+      message += "═══════════ 4. المعلومات المالية ═══════════\n";
+      message += "مرجع البنك: " + bankReference + "\n";
+      message += "قدرة الترابط: " + bondAmount + "\n";
+      message += "التغطية التأمينية: " + insuranceCoverage + "\n\n";
+      
+      message += "═══════════ 5. سجل السلامة ═══════════\n";
+      message += "برنامج السلامة: " + safetyProgram + "\n";
+      message += "EMR: " + emr + "\n\n";
+      
+      message += "═══════════ 6. الموظفين ═══════════\n";
+      message += "الموظفون الرئيسيون: " + keyStaff + "\n";
+      message += "الشهادات: " + certifications + "\n\n";
+      
+      message += "═══════════ 7. المعدات ═══════════\n";
+      message += "قائمة المعدات الرئيسية: " + equipmentList + "\n\n";
+      
+      message += "═══════════ 8. المقاولون من الباطن ═══════════\n";
+      message += "المقاولون من الباطن المؤهلون مسبقا:\n" + subcontractors + "\n\n";
+      
+      message += "═══════════ 9. المراجع ═══════════\n";
+      message += "مرجع العميل 1: " + clientReference + "\n\n";
+      
+      message += "═══════════ 10. القانون والامتثال ═══════════\n";
+      message += "تاريخ التقاضي: " + litigationHistory + "\n";
+      message += "الامتثال التنظيمي: " + regulatoryCompliance + "\n";
+      
+      // تحويل النص إلى رابط واتساب (استبدل "رقم_الهاتف" بالرقم المستهدف بصيغة دولية)
+      const phoneNumber = "966555992797";
+      const url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+      
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
